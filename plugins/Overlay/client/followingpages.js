@@ -258,9 +258,14 @@ var Piwik_Overlay_FollowingPages = (function () {
                     }
 
                     var zoomFactor = 1 + +tagElement.attr('data-rateofmax');
-                    tagElement.css({'zoom':zoomFactor, 'opacity': zoomFactor/2 });
-                    offset.top = offset.top / zoomFactor;
-                    offset.left = offset.left / zoomFactor;
+                    tagElement.css({
+                        '-webkit-transform': 'scale(' + zoomFactor + ')', 
+                        '-moz-transform': 'scale(' + zoomFactor + ')', 
+                        '-ms-transform': 'scale(' + zoomFactor + ')', 
+                        '-o-transform': 'scale(' + zoomFactor + ')', 
+                        'transform': 'scale(' + zoomFactor + ')', 
+                        'opacity': zoomFactor/2 
+                    });
 
                     top = offset.top - tagHeight + 6;
                     left = offset.left - tagWidth + 10;
